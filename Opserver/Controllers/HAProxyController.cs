@@ -14,7 +14,7 @@ namespace StackExchange.Opserver.Controllers
     {
         public override ISecurableModule SettingsModule => Current.Settings.HAProxy;
 
-        public override TopTab TopTab => new TopTab("HAProxy", nameof(Dashboard), this, 60)
+        public override TopTab TopTab => new TopTab("Proxy", nameof(Dashboard), this, 60)
         {
             GetMonitorStatus = () => HAProxyModule.Groups.GetWorstStatus()
         };
