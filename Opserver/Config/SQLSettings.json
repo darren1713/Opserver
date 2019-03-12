@@ -1,0 +1,31 @@
+﻿/* Configuration for the SQL Server dashboard */
+{
+  // The default connection string used unless specifically provided on a node
+  // $ServerName$ gets replaces with the name property of the instance
+  "defaultConnectionString": "Data Source=$ServerName$;Initial Catalog=master;User ID=opserver;Password={UPDATE ME};",
+  // How often to poll all servers (defaults to 60 seconds if not configured)
+  "refreshIntervalSeconds": 30,
+  // Always On Availability Group Clusters
+  "clusters": [
+    //{
+    //  // Used purely for display
+    //  "name": "NY-SQLCL03",
+    //  // How often to poll the server
+    //  "refreshIntervalSeconds": 20,
+    //  // The list of nodes (servers) in this AG setup
+    //  "nodes": [
+    //    { "name": "NY-SQL01" },
+    //    { "name": "NY-SQL02" },
+    //    { "name": "CO-SQL01" }
+    //  ]
+    //}
+  ],
+  // Standalone instances
+  "instances": [
+    // Some standalone servers (default instance) using default refresh and connection strings:
+    {
+      "name": "DB",
+      "connectionString": "Data Source={UPDATE ME - IP/host};Initial Catalog=master;User ID=opserver;Password={UPDATE ME};"
+    }
+  ]
+}

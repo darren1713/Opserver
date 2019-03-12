@@ -1,0 +1,43 @@
+﻿/* Configuration for the HAProxy dashboard */
+{
+  // (Optional) The amount of time (in milliseconds) before timing out - default to 60,000 (60 seconds)
+  "queryTimeout": 3000,
+  // Which security groups can view the HAProxy dashboard ("*" for everyone)
+  "viewGroups": "*",
+  // Which security groups have permissions to perform HAProxy actions (removing a server from rotation, etc.)
+  "adminGroups": "SysAdmins",
+  // The read-only username to use by default for all instances below
+  "user": "admin",
+  // The read-only password to use by default for all instance below
+  "password": "", // UPDATE ME
+  // Note: if no admin credentials are provided, admin features simply won't be enabled
+  // (Optional) The admin username to use by default for all instances below
+  "adminUser": "admin",
+  // (Optional) The admin password to use by default for all instance below
+  "adminPassword": "", // UPDATE ME
+  /* HAProxy groups of servers, where they are active/active, acive/passing, or some mirrored config
+     These are displayed together in the UI and can be managed as a unit */
+  "groups": [
+    {
+      // Name to display in the UI
+      "name": "GSE Web",
+      // Tooltip description for the UI
+      "description": "Primary",
+      // Instances in this group
+      "instances": [
+        {
+          // Name to display in the UI (colume name, should be short)
+          "name": "LB01",
+          // URL to hit the statistics API
+          "url": "http://10.1.0.0:10000/monitor" // UPDATE ME
+        }
+      ]
+    }
+  ],
+  /* A list of alises for frontend and backend names
+     The key is what backend name exists in HAProxy
+     The value is what friendly name you want displayed in the Opserver UI */
+  "aliases": {
+    "web-1": "GSatTrack"
+  }
+}
